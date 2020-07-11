@@ -542,6 +542,7 @@ public class Catalina {
         // Before digester - it may be needed
         initNaming();
 
+        // 创建Digester用于xml解析,用于解析server.xml配置文件
         // Create and execute our Digester
         Digester digester = createStartDigester();
 
@@ -550,6 +551,7 @@ public class Catalina {
         File file = null;
         try {
             try {
+                // 获取配置文件server.xml
                 file = configFile();
                 inputStream = new FileInputStream(file);
                 inputSource = new InputSource(file.toURI().toURL().toString());
@@ -608,6 +610,7 @@ public class Catalina {
             try {
                 inputSource.setByteStream(inputStream);
                 digester.push(this);
+                // 使用Digester对象解析server.xml配置文件,给成员变量server赋值
                 digester.parse(inputSource);
             } catch (SAXParseException spe) {
                 log.warn("Catalina.start using " + getConfigFile() + ": " +

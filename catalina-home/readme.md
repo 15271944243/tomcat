@@ -49,3 +49,6 @@ context.addServletContainerInitializer(new JasperInitializer(), null);
 
 ```
 7. 访问http://localhost:8080/docs/会404,并且报错也有乱码
+怎么处理?
+
+8. 启动类`org.apache.catalina.startup.Bootstrap#main()`
